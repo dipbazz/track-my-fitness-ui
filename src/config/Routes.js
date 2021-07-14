@@ -2,7 +2,6 @@ import { Route, Switch } from 'react-router-dom';
 import Login from '../components/Login';
 import Register from '../components/Register';
 
-
 const Routes = () => (
   <Switch>
     <Route path="/login" component={Login} exact />
