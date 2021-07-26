@@ -11,8 +11,7 @@ const Login = () => {
         password: password.value,
       },
     };
-    api.auth.login(data);
-    console.log(window.localStorage.getItem('token'));
+    const response = api.auth.login(data);
   };
 
   return (

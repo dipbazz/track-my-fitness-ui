@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { login, logout } from './helper';
 
 const baseURL = 'http://localhost:3000/api';
 // const token = window.localStorage.getItem('token');
@@ -20,25 +21,20 @@ const requests = {
 };
 
 const auth = {
-  login: (body) => {
-    requests.post('/users/login', body).then((data) => {
-      window.localStorage.setItem('token', data.user.token);
-      console.log(data);
-      return data;
-    }).catch((error) => error);
-  },
+  login: (body) => requests.post('/users/login', body).then((data) => {
+    login(data.user.token);
+    return Promise.resolve(data);
+  }).catch((error) => Promise.reject(error)),
 
   logout: () => {
-    window.localStorage.removeItem('token');
-    Promise.resolve({ user: null });
+    logout();
+    return Promise.resolve({ user: null });
   },
 
-  register: (body) => {
-    requests.post('/users', body).then((data) => {
-      window.localStorage.setItem('token', data.user.token);
-      return data;
-    }).catch((error) => error);
-  },
+  register: (body) => requests.post('/users', body).then((data) => {
+    login(data.user.token);
+    return Promise.resolve(data);
+  }).catch((error) => Promise.resolve(error)),
 };
 
 export { auth, api };

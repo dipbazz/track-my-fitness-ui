@@ -20,7 +20,7 @@ const ProtectedRoute = ({ children, isAuthenticated, ...rest }) => (
 );
 
 ProtectedRoute.propTypes = {
-  children: PropTypes.elementType.isRequired,
+  children: PropTypes.objectOf(PropTypes.object).isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
 };
 
