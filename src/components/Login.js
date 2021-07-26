@@ -1,17 +1,15 @@
 import { Link } from 'react-router-dom';
-import * as api from '../utils/api';
+import PropTypes from 'prop-types';
 
-const Login = () => {
+const Login = ({ loginUserAsync }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const { email, password } = e.target;
     const data = {
-      user: {
-        email: email.value,
-        password: password.value,
-      },
+      email: email.value,
+      password: password.value,
     };
-    const response = api.auth.login(data);
+    loginUserAsync(data);
   };
 
   return (
@@ -25,6 +23,10 @@ const Login = () => {
       <Link to="/register">Register </Link>
     </div>
   );
+};
+
+Login.propTypes = {
+  loginUserAsync: PropTypes.func.isRequired,
 };
 
 export default Login;
