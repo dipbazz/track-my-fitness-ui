@@ -5,11 +5,7 @@ const Login = ({ loginUserAsync }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const { email, password } = e.target;
-    const data = {
-      email: email.value,
-      password: password.value,
-    };
-    loginUserAsync(data);
+    loginUserAsync(email.value, password.value);
   };
 
   return (

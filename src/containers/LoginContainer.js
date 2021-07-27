@@ -3,7 +3,7 @@ import Login from '../components/Login';
 import { loginUserAsync } from '../redux/actions/thunk';
 
 const mapDispatchToProps = (dispatch) => ({
-  loginUserAsync: dispatch(loginUserAsync),
+  loginUserAsync: (email, password) => dispatch(loginUserAsync(email, password)),
 });
 
 export default connect(null, mapDispatchToProps)(Login);

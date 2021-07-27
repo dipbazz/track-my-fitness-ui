@@ -1,15 +1,12 @@
-import { loginUser } from '.';
+import { loginUser, logoutUser } from '.';
 import { auth } from '../../utils/api';
 
-export const loginUserAsync = (email, password) => (dispatch) => {
-  console.log(dispatch, '###########3');
-  return auth.login({
-    user: {
-      email,
-      password,
-    },
-  }).then((data) => dispatch(loginUser(data)));
-};
+export const loginUserAsync = (email, password) => (dispatch) => auth.login({
+  user: {
+    email,
+    password,
+  },
+}).then((data) => dispatch(loginUser(data)));
 
 export const logoutUserAsync = () => (dispatch) => auth.logout()
-  .then((data) => dispatch(loginUser(data)));
+  .then(() => dispatch(logoutUser()));

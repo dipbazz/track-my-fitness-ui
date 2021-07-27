@@ -24,6 +24,10 @@ ProtectedRoute.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
 };
 
-const mapStateToProps = (state) => ({ isAuthenticated: state.auth.isAuthenticated });
+const mapStateToProps = () => {
+  const isAuthenticated = Boolean(window.localStorage.getItem('token'));
+
+  return { isAuthenticated };
+};
 
 export default connect(mapStateToProps)(ProtectedRoute);

@@ -21,13 +21,11 @@ const requests = {
 };
 
 const auth = {
-  login: (body) => {
-    console.log(body);
-    return requests.post('/users/login', body).then((data) => {
-      login(data.user.token);
-      return Promise.resolve(data);
-    }).catch((error) => Promise.reject(error));
-  },
+  login: (body) => requests.post('/users/login', body).then((data) => {
+    login(data.user.token);
+    return Promise.resolve(data);
+  }).catch((error) => Promise.reject(error)),
+
   logout: () => {
     logout();
     return Promise.resolve({ user: null });
