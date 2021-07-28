@@ -7,7 +7,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  loginUserAsync: (email, password) => dispatch(loginUserAsync(email, password)),
+  login: (email, password) => dispatch(loginUserAsync(email, password)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { STATUS } from '../redux/actions/actionTypes';
 
-const Login = ({ loginUserAsync, auth }) => {
+const Login = ({ login, auth }) => {
   const history = useHistory();
   const handleSubmit = (e) => {
     e.preventDefault();
     const { email, password } = e.target;
-    loginUserAsync(email.value, password.value);
+    login(email.value, password.value);
   };
 
   useEffect(() => {
@@ -41,8 +41,13 @@ const Login = ({ loginUserAsync, auth }) => {
 };
 
 Login.propTypes = {
-  loginUserAsync: PropTypes.func.isRequired,
-  auth: PropTypes.objectOf(PropTypes.object).isRequired,
+  login: PropTypes.func.isRequired,
+  auth: PropTypes.shape({
+    isAuthenticated: PropTypes.bool,
+    status: PropTypes.string,
+    user: PropTypes.objectOf(PropTypes.object),
+    error: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  }).isRequired,
 };
 
 export default Login;
