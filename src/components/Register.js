@@ -1,15 +1,24 @@
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { STATUS } from '../redux/actions/actionTypes';
 import Error from './layouts/Error';
 
-const Register = ({ register, status, error }) => {
+const Register = ({
+  register, status, error, isAuthenticated,
+}) => {
+  const history = useHistory();
   const handleSubmit = (e) => {
     e.preventDefault();
     const { email, password } = e.target;
     register(email.value, password.value);
   };
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      history.push('/');
+    }
+  }, [status]);
 
   return (
     <div>
@@ -35,6 +44,7 @@ Register.propTypes = {
   error: PropTypes.objectOf(PropTypes.shape({
     message: PropTypes.string,
   })).isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
 };
 
 export default Register;

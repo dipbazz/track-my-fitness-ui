@@ -4,7 +4,9 @@ import { useEffect } from 'react';
 import { STATUS } from '../redux/actions/actionTypes';
 import Error from './layouts/Error';
 
-const Login = ({ login, status, error }) => {
+const Login = ({
+  login, status, error, isAuthenticated,
+}) => {
   const history = useHistory();
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -13,7 +15,7 @@ const Login = ({ login, status, error }) => {
   };
 
   useEffect(() => {
-    if (status === STATUS.success) {
+    if (isAuthenticated) {
       history.push('/');
     }
   }, [status]);
@@ -41,6 +43,7 @@ Login.propTypes = {
   error: PropTypes.objectOf(PropTypes.shape({
     message: PropTypes.string,
   })).isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
 };
 
 export default Login;
