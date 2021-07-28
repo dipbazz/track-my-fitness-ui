@@ -3,10 +3,8 @@ import {
   LOGOUT, STATUS, SUCCESS_LOGIN, SUCCESS_REGISTER,
 } from '../actions/actionTypes';
 
-const isAuthenticated = Boolean(window.localStorage.getItem('token'));
-
 const initialState = {
-  isAuthenticated,
+  isAuthenticated: false,
   status: STATUS.idle,
   user: null,
   error: null,
