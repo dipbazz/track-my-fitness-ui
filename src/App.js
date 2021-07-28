@@ -4,7 +4,7 @@ import Routes from './config/Routes';
 import NavbarContainer from './containers/NavbarContainer';
 
 function App() {
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
   return (
     <div className="App">
       {isAuthenticated ? <NavbarContainer /> : ''}

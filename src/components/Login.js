@@ -2,8 +2,9 @@ import { Link, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { STATUS } from '../redux/actions/actionTypes';
+import Error from './layouts/Error';
 
-const Login = ({ login, auth }) => {
+const Login = ({ login, status, error }) => {
   const history = useHistory();
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -12,27 +13,21 @@ const Login = ({ login, auth }) => {
   };
 
   useEffect(() => {
-    if (auth.status === STATUS.success) {
+    if (status === STATUS.success) {
       history.push('/');
     }
-  }, [auth]);
-
-  const renderError = (error) => (
-    <p style={{ color: 'red' }}>
-      {error.message}
-    </p>
-  );
+  }, [status]);
 
   return (
     <div>
       <h1>Login!!</h1>
-      {auth.status === STATUS.error ? renderError(auth.error) : ''}
+      {status === STATUS.error ? <Error errors={error} /> : ''}
 
       <form onSubmit={handleSubmit}>
         <input type="email" name="email" placeholder="your email" />
         <input type="password" name="password" placeholder="********" />
-        <button type="submit" disabled={auth.status === STATUS.loading}>
-          { auth.status === STATUS.loading ? 'Logging in ...' : 'Login'}
+        <button type="submit" disabled={status === STATUS.loading}>
+          { status === STATUS.loading ? 'Logging in ...' : 'Login'}
         </button>
       </form>
       <Link to="/register">Register </Link>
@@ -42,12 +37,10 @@ const Login = ({ login, auth }) => {
 
 Login.propTypes = {
   login: PropTypes.func.isRequired,
-  auth: PropTypes.shape({
-    isAuthenticated: PropTypes.bool,
-    status: PropTypes.string,
-    user: PropTypes.objectOf(PropTypes.object),
-    error: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-  }).isRequired,
+  status: PropTypes.string.isRequired,
+  error: PropTypes.objectOf(PropTypes.shape({
+    message: PropTypes.string,
+  })).isRequired,
 };
 
 export default Login;

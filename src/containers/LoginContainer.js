@@ -3,7 +3,8 @@ import Login from '../components/Login';
 import { loginUserAsync } from '../redux/actions/thunk';
 
 const mapStateToProps = (state) => ({
-  auth: state.auth,
+  status: state.user.status,
+  error: state.user.error,
 });
 
 const mapDispatchToProps = (dispatch) => ({

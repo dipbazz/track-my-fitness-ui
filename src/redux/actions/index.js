@@ -1,5 +1,6 @@
 import {
-  SUCCESS_LOGIN, LOGOUT, LOADING_LOGIN, ERROR_LOGIN,
+  SUCCESS_LOGIN, LOGOUT, LOADING_LOGIN, ERROR_LOGIN, LOADING_REGISTER,
+  SUCCESS_REGISTER, ERROR_REGISTER,
 } from './actionTypes';
 
 export const loginUserLoading = () => ({
@@ -13,6 +14,20 @@ export const loginUserSuccess = (user) => ({
 
 export const loginUserError = (error) => ({
   type: ERROR_LOGIN,
+  payload: error,
+});
+
+export const registerUserLoading = () => ({
+  type: LOADING_REGISTER,
+});
+
+export const registerUserSuccess = (user) => ({
+  type: SUCCESS_REGISTER,
+  payload: user,
+});
+
+export const registerUserError = (error) => ({
+  type: ERROR_REGISTER,
   payload: error,
 });
 
