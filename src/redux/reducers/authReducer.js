@@ -1,4 +1,4 @@
-import { LOGIN, LOGOUT } from '../actions/actionTypes';
+import { LOGOUT, SUCCESS_LOGIN } from '../actions/actionTypes';
 
 const isAuthenticated = Boolean(window.localStorage.getItem('token'));
 
@@ -9,7 +9,7 @@ const initialState = {
 
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
-    case LOGIN:
+    case SUCCESS_LOGIN:
       return {
         ...state,
         isAuthenticated: true,

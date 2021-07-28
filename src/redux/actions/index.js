@@ -1,7 +1,7 @@
-import { LOGIN, LOGOUT } from './actionTypes';
+import { SUCCESS_LOGIN, LOGOUT } from './actionTypes';
 
-export const loginUser = (user) => ({
-  type: LOGIN,
+export const loginUserSuccess = (user) => ({
+  type: SUCCESS_LOGIN,
   payload: user,
 });
 

@@ -1,11 +1,13 @@
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const Login = ({ loginUserAsync }) => {
+  const history = useHistory();
   const handleSubmit = (e) => {
     e.preventDefault();
     const { email, password } = e.target;
     loginUserAsync(email.value, password.value);
+    history.push('/');
   };
 
   return (
