@@ -24,7 +24,7 @@ const auth = {
   login: (body) => requests.post('/users/login', body).then((data) => {
     login(data.user.token);
     return Promise.resolve(data);
-  }).catch((error) => Promise.reject(error)),
+  }),
 
   logout: () => {
     logout();
@@ -34,7 +34,7 @@ const auth = {
   register: (body) => requests.post('/users', body).then((data) => {
     login(data.user.token);
     return Promise.resolve(data);
-  }).catch((error) => Promise.resolve(error)),
+  }),
 };
 
 export { auth, api };
