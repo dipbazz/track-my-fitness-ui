@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
 
-const Error = ({ errors }) => (
+const FormError = ({ errors }) => (
   <p style={{ color: 'red' }}>
     {Object.keys(errors).map((key) => `${key}: ${errors[key]}`)}
   </p>
 );
 
-Error.propTypes = {
-  errors: PropTypes.objectOf(PropTypes.object).isRequired,
+FormError.propTypes = {
+  errors: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
-export default Error;
+export default FormError;

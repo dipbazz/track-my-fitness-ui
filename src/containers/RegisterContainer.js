@@ -9,7 +9,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  register: (email, password) => dispatch(registerUserAsync(email, password)),
+  registerUser: (email, password) => dispatch(registerUserAsync(email, password)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Register);

@@ -1,18 +1,24 @@
 import { Link, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
 import { STATUS } from '../redux/actions/actionTypes';
-import Error from './layouts/Error';
+import InputError from './layouts/InputError';
+import FormError from './layouts/FormError';
 
+/* eslint-disable react/jsx-props-no-spreading */
 const Register = ({
-  register, status, error, isAuthenticated,
+  registerUser, status, error, isAuthenticated,
 }) => {
   const history = useHistory();
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const { email, password } = e.target;
-    register(email.value, password.value);
+  const {
+    register, handleSubmit, watch, formState: { errors },
+  } = useForm();
+  const submitForm = (data) => {
+    registerUser({ ...data });
   };
+
+  console.log(errors);
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -23,12 +29,37 @@ const Register = ({
   return (
     <div>
       <h1>Register!!</h1>
-      {status === STATUS.error ? <Error errors={error} /> : ''}
+      {status === STATUS.error && <FormError errors={error} /> }
 
-      <form onSubmit={handleSubmit}>
-        <input type="email" name="email" placeholder="your email" />
-        <input type="password" name="password" placeholder="password" />
-        <input type="password" name="confirmPassword" placeholder="confirm password" />
+      <form onSubmit={handleSubmit(submitForm)}>
+        <input
+          type="email"
+          {...register('email', {
+            required: 'This field is required',
+          })}
+          placeholder="your email"
+        />
+        {errors.email && <InputError error={errors.email.message} />}
+        <br />
+        <input
+          type="password"
+          {...register('password', {
+            required: 'This field is required',
+          })}
+          placeholder="password"
+        />
+        {errors.password && <InputError error={errors.password.message} />}
+        <br />
+        <input
+          type="password"
+          {...register('confirmPassword', {
+            required: 'This field is required',
+            validate: (value) => value === watch('password') || "Password didn't match.",
+          })}
+          placeholder="confirm password"
+        />
+        {errors.confirmPassword && <InputError error={errors.confirmPassword.message} />}
+        <br />
         <button type="submit" disabled={status === STATUS.loading}>
           Register
         </button>
@@ -38,12 +69,14 @@ const Register = ({
   );
 };
 
+Register.defaultProps = {
+  error: {},
+};
+
 Register.propTypes = {
-  register: PropTypes.func.isRequired,
+  registerUser: PropTypes.func.isRequired,
   status: PropTypes.string.isRequired,
-  error: PropTypes.objectOf(PropTypes.shape({
-    message: PropTypes.string,
-  })).isRequired,
+  error: PropTypes.objectOf(PropTypes.object),
   isAuthenticated: PropTypes.bool.isRequired,
 };
 
