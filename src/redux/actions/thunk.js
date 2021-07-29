@@ -1,8 +1,11 @@
 import {
+  exerciseError,
+  exerciseLoading,
+  exerciseSuccess,
   loginUserError, loginUserLoading, loginUserSuccess, logoutUser,
   registerUserError, registerUserLoading, registerUserSuccess,
 } from '.';
-import { auth } from '../../utils/api';
+import { auth, exercise } from '../../utils/api';
 
 export const loginUserAsync = (email, password) => (dispatch) => {
   dispatch(loginUserLoading());
@@ -30,3 +33,13 @@ export const registerUserAsync = (email, password) => (dispatch) => {
 
 export const logoutUserAsync = () => (dispatch) => auth.logout()
   .then(() => dispatch(logoutUser()));
+
+export const getExerciseAsync = (id) => (dispatch) => {
+  dispatch(exerciseLoading());
+  exercise.get(id)
+    .then((data) => dispatch(exerciseSuccess(data)))
+    .catch((error) => {
+      console.log(error.response);
+      dispatch(exerciseError(error.response.data));
+    });
+};

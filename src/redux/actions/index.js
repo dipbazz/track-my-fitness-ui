@@ -1,6 +1,7 @@
 import {
   SUCCESS_LOGIN, LOGOUT, LOADING_LOGIN, ERROR_LOGIN, LOADING_REGISTER,
-  SUCCESS_REGISTER, ERROR_REGISTER,
+  SUCCESS_REGISTER, ERROR_REGISTER, LOADING_EXERCISE, SUCCESS_EXERCISE,
+  ERROR_EXERCISE,
 } from './actionTypes';
 
 export const loginUserLoading = () => ({
@@ -33,4 +34,18 @@ export const registerUserError = (error) => ({
 
 export const logoutUser = () => ({
   type: LOGOUT,
+});
+
+export const exerciseLoading = () => ({
+  type: LOADING_EXERCISE,
+});
+
+export const exerciseSuccess = (user) => ({
+  type: SUCCESS_EXERCISE,
+  payload: user,
+});
+
+export const exerciseError = (error) => ({
+  type: ERROR_EXERCISE,
+  payload: error,
 });

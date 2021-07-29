@@ -15,10 +15,8 @@ const Register = ({
     register, handleSubmit, watch, formState: { errors },
   } = useForm();
   const submitForm = (data) => {
-    registerUser({ ...data });
+    registerUser(data.email, data.password);
   };
-
-  console.log(errors);
 
   useEffect(() => {
     if (isAuthenticated) {

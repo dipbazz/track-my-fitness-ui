@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { login, logout } from './helper';
+import { getAuthorizeToken, login, logout } from './helper';
 
 const baseURL = 'http://localhost:3000/api';
 // const token = window.localStorage.getItem('token');
@@ -7,6 +7,15 @@ const baseURL = 'http://localhost:3000/api';
 
 const api = axios.create({
   baseURL,
+});
+
+console.log(getAuthorizeToken());
+
+const authorizeApi = axios.create({
+  baseURL,
+  headers: {
+    Authorization: getAuthorizeToken(),
+  },
 });
 
 // api.defaults.headers.common.Authorization = token;
@@ -18,6 +27,13 @@ const requests = {
   get: (url) => api.get(url).then(getData),
   put: (url, body) => api.put(url, body).then(getData),
   post: (url, body) => api.post(url, body).then(getData),
+};
+
+const authorizeRequests = {
+  delete: (url) => authorizeApi.delete(url).then(getData),
+  get: (url) => authorizeApi.get(url).then(getData),
+  put: (url, body) => authorizeApi.put(url, body).then(getData),
+  post: (url, body) => authorizeApi.post(url, body).then(getData),
 };
 
 const auth = {
@@ -37,4 +53,8 @@ const auth = {
   }),
 };
 
-export { auth, api };
+const exercise = {
+  get: (id) => authorizeRequests.get(id ? `/exercises/${id}` : '/exercises'),
+};
+
+export { auth, exercise };
