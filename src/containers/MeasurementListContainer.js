@@ -1,14 +1,15 @@
 import { connect } from 'react-redux';
 import MeasurementList from '../components/MeasurementList';
+import { getMeasurementAsync } from '../redux/actions/thunk';
 
-// const mapStateToProps = (state) => ({
-//   status: state.exercise.status,
-//   error: state.exercise.error,
-//   exercises: state.exercise.exercises,
-// });
+const mapStateToProps = (state) => ({
+  status: state.measurement.status,
+  error: state.measurement.error,
+  measurements: state.measurement.measurements,
+});
 
-// const mapDispatchToProps = (dispatch) => ({
-//   getExercise: (id) => dispatch(getExerciseAsync(id)),
-// });
+const mapDispatchToProps = (dispatch) => ({
+  getMeasurement: (id) => dispatch(getMeasurementAsync(id)),
+});
 
-export default connect()(MeasurementList);
+export default connect(mapStateToProps, mapDispatchToProps)(MeasurementList);

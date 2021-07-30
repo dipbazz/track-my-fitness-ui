@@ -3,9 +3,12 @@ import {
   exerciseLoading,
   exerciseSuccess,
   loginUserError, loginUserLoading, loginUserSuccess, logoutUser,
+  measurementError,
+  measurementLoading,
+  measurementSuccess,
   registerUserError, registerUserLoading, registerUserSuccess,
 } from '.';
-import { auth, exercise } from '../../utils/api';
+import { auth, exercise, measurement } from '../../utils/api';
 
 export const loginUserAsync = (email, password) => (dispatch) => {
   dispatch(loginUserLoading());
@@ -42,4 +45,11 @@ export const getExerciseAsync = (id) => (dispatch) => {
       console.log(error.response);
       dispatch(exerciseError(error.response.data));
     });
+};
+
+export const getMeasurementAsync = (id) => (dispatch) => {
+  dispatch(measurementLoading());
+  measurement.get(id)
+    .then((data) => dispatch(measurementSuccess(data)))
+    .catch((error) => dispatch(measurementError(error.response.data)));
 };

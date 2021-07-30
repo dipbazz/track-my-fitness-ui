@@ -10,7 +10,7 @@ const Measurement = ({
   const [measurements, setMeasurements] = useState({});
   useEffect(() => {
     getExercise();
-    console.log(status, error, exercises);
+    console.log(status, error);
   }, []);
 
   const submitForm = (e) => {
