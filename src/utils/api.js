@@ -2,14 +2,10 @@ import axios from 'axios';
 import { getAuthorizeToken, login, logout } from './helper';
 
 const baseURL = 'http://localhost:3000/api';
-// const token = window.localStorage.getItem('token');
-// let token;
 
 const api = axios.create({
   baseURL,
 });
-
-console.log(getAuthorizeToken());
 
 const authorizeApi = axios.create({
   baseURL,
@@ -17,8 +13,6 @@ const authorizeApi = axios.create({
     Authorization: getAuthorizeToken(),
   },
 });
-
-// api.defaults.headers.common.Authorization = token;
 
 const getData = (res) => res.data;
 
@@ -57,4 +51,9 @@ const exercise = {
   get: (id) => authorizeRequests.get(id ? `/exercises/${id}` : '/exercises'),
 };
 
-export { auth, exercise };
+const measurement = {
+  post: (body) => authorizeRequests.post('/measurements', body),
+  get: (id) => authorizeRequests.get(id ? `/measurements/${id}` : '/measurements'),
+};
+
+export { auth, exercise, measurement };
