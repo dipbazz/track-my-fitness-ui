@@ -9,12 +9,15 @@ const Navbar = ({ logout, user }) => {
   return (
     <nav>
       <p>{user.user ? user.user.email : ''}</p>
-      <ul>
-        <li>
+      <ul className="flex">
+        <li className="p-3 text-blue-600">
           <Link to="/">Home</Link>
         </li>
-        <li>
+        <li className="p-3 text-blue-600">
           <Link to="/measurement">Measurement</Link>
+        </li>
+        <li className="p-3 text-blue-600">
+          <Link to="/measurement/list">Measurement list</Link>
         </li>
       </ul>
       <button type="button" onClick={handleLogout}>Logout</button>
