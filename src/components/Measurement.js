@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import MeasurementForm from './MeasurementForm';
 
 const Measurement = ({
   status, error, exercises, getExercise,
@@ -10,10 +11,10 @@ const Measurement = ({
   }, []);
 
   return (
-    <h1>
-      Measurement!!
-      {status}
-    </h1>
+    <>
+      <h1>Measurement!!</h1>
+      {exercises.map((exercise) => <MeasurementForm key={exercise.id} exercise={exercise} />)}
+    </>
   );
 };
 
