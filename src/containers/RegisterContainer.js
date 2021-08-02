@@ -8,8 +8,8 @@ const mapStateToProps = (state) => ({
   isAuthenticated: state.user.isAuthenticated,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  registerUser: (email, password) => dispatch(registerUserAsync(email, password)),
-});
+const mapDispatchToProps = {
+  registerUser: (email, password) => registerUserAsync(email, password),
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Register);

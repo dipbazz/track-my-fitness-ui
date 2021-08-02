@@ -8,8 +8,8 @@ const mapStateToProps = (state) => ({
   exercises: state.exercise.exercises,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  getExercise: (id) => dispatch(getExerciseAsync(id)),
-});
+const mapDispatchToProps = {
+  getExercise: (id) => getExerciseAsync(id),
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Measurement);

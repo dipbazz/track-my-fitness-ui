@@ -8,8 +8,8 @@ const mapStateToProps = (state) => ({
   measurements: state.measurement.measurements,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  getMeasurement: (id) => dispatch(getMeasurementAsync(id)),
-});
+const mapDispatchToProps = {
+  getMeasurements: (id) => getMeasurementAsync(id),
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(MeasurementList);

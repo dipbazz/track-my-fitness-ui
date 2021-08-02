@@ -6,8 +6,8 @@ const mapStateToProps = (state) => ({
   user: state.user,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  logout: () => dispatch(logoutUserAsync()),
-});
+const mapDispatchToProps = {
+  logout: () => logoutUserAsync(),
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
