@@ -3,36 +3,23 @@ import { useEffect } from 'react';
 import MeasurementItem from './MeasurementItem';
 
 const MeasurementList = ({
-  status, error, measurements, getMeasurements,
+  status, error, measurements, getMeasurements, getExercises,
 }) => {
   // const [items, setItems] = useEffect();
   useEffect(() => {
     console.log(status, error);
+    getExercises();
     getMeasurements();
   }, []);
-
-  const prepareData = (measurements) => {
-    const items = {};
-    measurements.forEach((measurement) => {
-      const key = measurement.created_at.split('T')[0];
-      const value = items[key];
-      if (value) {
-        value.push(measurement);
-      } else {
-        items[key] = [measurement];
-      }
-    });
-
-    return items;
-  };
 
   return (
     <>
       <h1>Measurement list!!</h1>
-      {Object.entries(prepareData(measurements)).map(([key, value]) => (
+      {measurements.map((measurement) => (
         <MeasurementItem
-          key={key}
-          measurements={value}
+          key={measurement.date}
+          date={measurement.date}
+          measurements={measurement.data}
         />
       ))}
     </>
@@ -48,6 +35,7 @@ MeasurementList.propTypes = {
   error: PropTypes.objectOf(PropTypes.any),
   measurements: PropTypes.arrayOf(PropTypes.object).isRequired,
   getMeasurements: PropTypes.func.isRequired,
+  getExercises: PropTypes.func.isRequired,
 };
 
 export default MeasurementList;

@@ -41,10 +41,7 @@ export const getExerciseAsync = (id) => (dispatch) => {
   dispatch(exerciseLoading());
   exercise.get(id)
     .then((data) => dispatch(exerciseSuccess(data)))
-    .catch((error) => {
-      console.log(error.response);
-      dispatch(exerciseError(error.response.data));
-    });
+    .catch((error) => dispatch(exerciseError(error.response.data)));
 };
 
 export const getMeasurementAsync = (id) => (dispatch) => {

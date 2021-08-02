@@ -2,7 +2,6 @@ import moment from 'moment';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import MeasurementDetail from './MeasurementDetail';
 
 const MeasurementItem = ({ date, measurements }) => {
   const exercises = useSelector((state) => state.exercise.exercises);
@@ -11,22 +10,19 @@ const MeasurementItem = ({ date, measurements }) => {
       const exercise = exercises.find((exercise) => exercise.id === item.exercise_id);
       return result + ((item.quantity / exercise.target) * 100);
     }, 0);
-
-    console.log(measurements);
-
     return (sum / measurements.length).toFixed(2);
   };
 
   return (
     <>
-      <Link to="/" className="flex justify-between p-3 shadow m-2">
+      <Link to={`/measurement/detail/${date}`} className="flex justify-between p-4 shadow my-4">
         <span>chart</span>
         <span>{moment(date).format('dddd, MMMM Do YYYY')}</span>
-        <span>{calculateProgress(measurements)}</span>
+        <span>
+          {calculateProgress(measurements)}
+          %
+        </span>
       </Link>
-      {measurements.map((measurement) => (
-        <MeasurementDetail key={measurement.id} measurement={measurement} />
-      ))}
     </>
   );
 };

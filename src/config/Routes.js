@@ -5,6 +5,7 @@ import LoginContainer from '../containers/LoginContainer';
 import RegisterContainer from '../containers/RegisterContainer';
 import MeasurementContainer from '../containers/MeasurementContainer';
 import MeasurementListContainer from '../containers/MeasurementListContainer';
+import MeasurementDetailContainer from '../containers/MeasurementDetailContainer';
 
 const Routes = () => (
   <Switch>
@@ -16,6 +17,9 @@ const Routes = () => (
     </ProtectedRoute>
     <ProtectedRoute path="/measurement/list" exact>
       <MeasurementListContainer />
+    </ProtectedRoute>
+    <ProtectedRoute path="/measurement/detail/:date" exact>
+      <MeasurementDetailContainer />
     </ProtectedRoute>
     <Route path="/login" component={LoginContainer} exact />
     <Route path="/register" component={RegisterContainer} exact />

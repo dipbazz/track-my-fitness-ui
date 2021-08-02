@@ -2,8 +2,7 @@ import PropTypes from 'prop-types';
 
 const MeasurementDetail = ({ measurement }) => (
   <>
-    <span>{measurement.id}</span>
-    <span>{measurement.quantity}</span>
+    <span>{measurement.date}</span>
   </>
 );
 
