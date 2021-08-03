@@ -16,5 +16,5 @@ export const calculateProgress = (measurements, exercises) => {
     const exercise = exercises.find((exercise) => exercise.id === item.exercise_id);
     return result + ((item.quantity / exercise.target) * 100);
   }, 0);
-  return (sum / measurements.length).toFixed(2);
+  return parseFloat((sum / measurements.length).toFixed(2));
 };
