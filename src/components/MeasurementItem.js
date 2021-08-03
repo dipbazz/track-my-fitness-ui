@@ -2,16 +2,10 @@ import moment from 'moment';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { calculateProgress } from '../utils/helper';
 
 const MeasurementItem = ({ date, measurements }) => {
   const exercises = useSelector((state) => state.exercise.exercises);
-  const calculateProgress = (measurements) => {
-    const sum = measurements.reduce((result, item) => {
-      const exercise = exercises.find((exercise) => exercise.id === item.exercise_id);
-      return result + ((item.quantity / exercise.target) * 100);
-    }, 0);
-    return (sum / measurements.length).toFixed(2);
-  };
 
   return (
     <>
@@ -19,7 +13,7 @@ const MeasurementItem = ({ date, measurements }) => {
         <span>chart</span>
         <span>{moment(date).format('dddd, MMMM Do YYYY')}</span>
         <span>
-          {calculateProgress(measurements)}
+          {calculateProgress(measurements, exercises)}
           %
         </span>
       </Link>

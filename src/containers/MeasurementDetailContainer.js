@@ -9,6 +9,7 @@ const mapStateToProps = (state, ownProps) => {
     measurement.date === ownProps.match.params.date));
   return {
     measurement,
+    exercises: state.exercise.exercises,
   };
 };
 
