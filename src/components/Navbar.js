@@ -19,6 +19,9 @@ const Navbar = ({ logout, user }) => {
         <li className="p-3 text-blue-600">
           <Link to="/measurement/list">Measurement list</Link>
         </li>
+        <li className="p-3 text-blue-600">
+          <Link to="/progress">Progress</Link>
+        </li>
       </ul>
       <button type="button" onClick={handleLogout}>Logout</button>
     </nav>
