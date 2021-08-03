@@ -8,8 +8,7 @@ const MeasurementDetail = ({ measurement, exercises }) => {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const rate = calculateProgress(measurement.data, exercises);
-    setProgress(rate >= 100 ? 100 : rate);
+    setProgress(calculateProgress(measurement.data, exercises));
   }, [measurement, exercises]);
 
   const findMeasurement = (exerciseId) => (

@@ -11,8 +11,7 @@ const MeasurementItem = ({ date, measurements }) => {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const rate = calculateProgress(measurements, exercises);
-    setProgress(rate > 100 ? 100 : rate);
+    setProgress(calculateProgress(measurements, exercises));
   }, [measurements, exercises]);
 
   return (
