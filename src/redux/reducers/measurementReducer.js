@@ -22,7 +22,8 @@ const prepareData = (measurements) => {
     }
   });
 
-  return Object.entries(items).map(([key, value]) => ({ date: key, data: value }));
+  const data = Object.entries(items).map(([key, value]) => ({ date: key, data: value }));
+  return data.sort((a, b) => ((a.date < b.date) ? 1 : -1));
 };
 
 const measurementReducer = (state = initialState, action) => {

@@ -7,6 +7,7 @@ import MeasurementContainer from '../containers/MeasurementContainer';
 import MeasurementListContainer from '../containers/MeasurementListContainer';
 import MeasurementDetailContainer from '../containers/MeasurementDetailContainer';
 import ProgressContainer from '../containers/ProgressContainer';
+import MoreContainer from '../containers/MoreContainer';
 
 const Routes = () => (
   <Switch>
@@ -24,6 +25,9 @@ const Routes = () => (
     </ProtectedRoute>
     <ProtectedRoute path="/progress" exact>
       <ProgressContainer />
+    </ProtectedRoute>
+    <ProtectedRoute path="/more" exact>
+      <MoreContainer />
     </ProtectedRoute>
     <Route path="/login" component={LoginContainer} exact />
     <Route path="/register" component={RegisterContainer} exact />

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 import MeasurementForm from './MeasurementForm';
 import { measurement } from '../utils/api';
 import Heading from './layouts/Heading';
@@ -9,6 +10,7 @@ const Measurement = ({
   status, error, exercises, getExercise,
 }) => {
   const [measurements, setMeasurements] = useState({});
+  const history = useHistory();
   useEffect(() => {
     getExercise();
     console.log(status, error);
@@ -24,7 +26,10 @@ const Measurement = ({
     }));
     axios
       .all(requests)
-      .then(() => setMeasurements({}))
+      .then(() => {
+        setMeasurements({});
+        history.push('/measurement/list');
+      })
       .catch((errors) => console.log(errors));
   };
 

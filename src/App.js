@@ -1,13 +1,12 @@
 import { useSelector } from 'react-redux';
-import './App.css';
+import Navbar from './components/Navbar';
 import Routes from './config/Routes';
-import NavbarContainer from './containers/NavbarContainer';
 
 function App() {
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
   return (
-    <div className="App max-w-3xl m-auto mb-32">
-      {isAuthenticated ? <NavbarContainer /> : ''}
+    <div className="max-w-3xl m-auto mb-32">
+      {isAuthenticated ? <Navbar /> : ''}
       <Routes />
     </div>
   );
