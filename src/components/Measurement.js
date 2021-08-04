@@ -5,6 +5,9 @@ import { useHistory } from 'react-router-dom';
 import MeasurementForm from './MeasurementForm';
 import { measurement } from '../utils/api';
 import Heading from './layouts/Heading';
+import { STATUS } from '../redux/actions/actionTypes';
+import FormError from './layouts/FormError';
+import Loading from './layouts/Loading';
 
 const Measurement = ({
   status, error, exercises, getExercise,
@@ -13,7 +16,6 @@ const Measurement = ({
   const history = useHistory();
   useEffect(() => {
     getExercise();
-    console.log(status, error);
   }, []);
 
   const submitForm = (e) => {
@@ -40,9 +42,19 @@ const Measurement = ({
     });
   };
 
+  if (status === STATUS.loading) {
+    return (
+      <>
+        <Heading title="Add your measurements" />
+        <Loading />
+      </>
+    );
+  }
+
   return (
     <>
       <Heading title="Add your measurements" />
+      {status === STATUS.error && <FormError errors={error} /> }
       <form onSubmit={submitForm}>
         {exercises.map((exercise) => (
           <MeasurementForm

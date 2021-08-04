@@ -1,21 +1,33 @@
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
+import { STATUS } from '../redux/actions/actionTypes';
+import FormError from './layouts/FormError';
 import Heading from './layouts/Heading';
+import Loading from './layouts/Loading';
 import MeasurementItem from './MeasurementItem';
 
 const MeasurementList = ({
   status, error, measurements, getMeasurements, getExercises,
 }) => {
-  // const [items, setItems] = useEffect();
   useEffect(() => {
     console.log(status, error);
     getExercises();
     getMeasurements();
   }, []);
 
+  if (status === STATUS.loading) {
+    return (
+      <>
+        <Heading title="Add your measurements" />
+        <Loading />
+      </>
+    );
+  }
+
   return (
     <>
       <Heading title="Measurement list" />
+      {status === STATUS.error && <FormError errors={error} /> }
       <div>
         {measurements.map((measurement) => (
           <MeasurementItem
