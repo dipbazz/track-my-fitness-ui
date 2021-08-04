@@ -1,5 +1,10 @@
+import Heading from './layouts/Heading';
+
 const Home = () => (
-  <h1>Home!!</h1>
+  <>
+    <Heading title="Home" />
+    <h1>Home!!</h1>
+  </>
 );
 
 export default Home;
