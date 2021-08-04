@@ -38,7 +38,10 @@ const MeasurementItem = ({ date, measurements }) => {
             }}
           />
         </div>
-        <span className="">{moment(date).format('dddd, MMMM Do YYYY')}</span>
+        <p className="">
+          <span className="hidden sm:inline-block mr-2">{moment(date).format('dddd, ')}</span>
+          <span>{moment(date).format('MMMM Do YYYY')}</span>
+        </p>
         <span className="flex items-center">
           {progress}
           %

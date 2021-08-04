@@ -11,37 +11,37 @@ const Navbar = ({ logout, user }) => {
   };
 
   return (
-    <nav className="fixed bottom-0 w-full max-w-3xl bg-azure-900">
+    <nav className="fixed z-10 bottom-0 w-full max-w-3xl bg-azure-900">
       <p className="hidden">{user.user ? user.user.email : ''}</p>
       <ul className="flex justify-center">
         <li className="py-3 px-5 text-white text-center">
           <Link className="" to="/">
             <FaHome className="text-3xl m-auto" />
-            Home
+            <span className="hidden sm:block">Home</span>
           </Link>
         </li>
         <li className="py-3 px-5 text-white text-center">
           <Link className="" to="/measurement">
             <AiOutlineBarChart className="text-3xl m-auto" />
-            Measurement
+            <span className="hidden sm:block">Measurement</span>
           </Link>
         </li>
         <li className="py-3 px-5 text-white text-center">
           <Link className="" to="/measurement/list">
             <GiProgression className="text-3xl m-auto" />
-            Measurement list
+            <span className="hidden sm:block">Measurement list</span>
           </Link>
         </li>
         <li className="py-3 px-5 text-white text-center">
           <Link className="" to="/progress">
             <AiFillPieChart className="text-3xl m-auto" />
-            Progress
+            <span className="hidden sm:block">Progress</span>
           </Link>
         </li>
         <li className="py-3 px-5 text-white text-center">
           <Link className="" to="/progress">
             <FiMoreHorizontal className="text-3xl m-auto" />
-            More
+            <span className="hidden sm:block">More</span>
           </Link>
         </li>
       </ul>

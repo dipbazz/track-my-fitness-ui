@@ -48,7 +48,7 @@ const MeasurementDetail = ({ measurement, exercises }) => {
         />
       </div>
 
-      <div className="grid grid-cols-2 gap-5 mt-6">
+      <div className="grid sm:grid-cols-2 gap-5 mt-6">
         {exercises.map((exercise) => (
           <ExerciseCard
             key={exercise.id}

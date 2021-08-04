@@ -9,7 +9,7 @@ const MeasurementForm = ({ exercise, measurements, measurementChange }) => (
         <input
           onChange={measurementChange}
           value={measurements[exercise.id] || ''}
-          className="border border-gray-300 mr-3 px-3 py-2 rounded"
+          className="border border-gray-300 mr-3 px-3 py-2 rounded w-20 sm:w-auto"
           name={exercise.id}
           type="number"
           placeholder="10"

@@ -16,13 +16,15 @@ const MeasurementList = ({
   return (
     <>
       <Heading title="Measurement list" />
-      {measurements.map((measurement) => (
-        <MeasurementItem
-          key={measurement.date}
-          date={measurement.date}
-          measurements={measurement.data}
-        />
-      ))}
+      <div>
+        {measurements.map((measurement) => (
+          <MeasurementItem
+            key={measurement.date}
+            date={measurement.date}
+            measurements={measurement.data}
+          />
+        ))}
+      </div>
     </>
   );
 };
