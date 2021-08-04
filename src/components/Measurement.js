@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import MeasurementForm from './MeasurementForm';
 import { measurement } from '../utils/api';
+import Heading from './layouts/Heading';
 
 const Measurement = ({
   status, error, exercises, getExercise,
@@ -36,7 +37,7 @@ const Measurement = ({
 
   return (
     <>
-      <h1>Measurement!!</h1>
+      <Heading title="Add your measurements" />
       <form onSubmit={submitForm}>
         {exercises.map((exercise) => (
           <MeasurementForm
@@ -46,7 +47,9 @@ const Measurement = ({
             exercise={exercise}
           />
         ))}
-        <button className="border border-gray-500" type="submit">Save</button>
+        <button className="w-52 mt-4 py-2 shadow-sm rounded bg-green-400 text-white font-bold text-xl" type="submit">
+          Save
+        </button>
       </form>
     </>
   );

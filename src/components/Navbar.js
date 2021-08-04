@@ -11,7 +11,7 @@ const Navbar = ({ logout, user }) => {
   };
 
   return (
-    <nav className="fixed bottom-0 w-full bg-azure-900">
+    <nav className="fixed bottom-0 w-full max-w-3xl bg-azure-900">
       <p className="hidden">{user.user ? user.user.email : ''}</p>
       <ul className="flex justify-center">
         <li className="py-3 px-5 text-white text-center">
