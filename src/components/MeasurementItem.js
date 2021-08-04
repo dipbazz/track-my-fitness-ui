@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Chart from 'react-google-charts';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { FaChevronRight } from 'react-icons/fa';
 import { calculateProgress } from '../utils/helper';
 
 const MeasurementItem = ({ date, measurements }) => {
@@ -16,7 +17,7 @@ const MeasurementItem = ({ date, measurements }) => {
 
   return (
     <>
-      <Link to={`/measurement/detail/${date}`} className="flex justify-between p-4 shadow my-4">
+      <Link to={`/measurement/detail/${date}`} className="flex justify-between items-center p-4 shadow my-4 bg-white">
         <div>
           <Chart
             width="60px"
@@ -37,10 +38,11 @@ const MeasurementItem = ({ date, measurements }) => {
             }}
           />
         </div>
-        <span>{moment(date).format('dddd, MMMM Do YYYY')}</span>
-        <span>
+        <span className="">{moment(date).format('dddd, MMMM Do YYYY')}</span>
+        <span className="flex items-center">
           {progress}
           %
+          <FaChevronRight className="ml-3" />
         </span>
       </Link>
     </>

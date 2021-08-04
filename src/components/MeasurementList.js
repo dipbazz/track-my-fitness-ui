@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
+import Heading from './layouts/Heading';
 import MeasurementItem from './MeasurementItem';
 
 const MeasurementList = ({
@@ -14,7 +15,7 @@ const MeasurementList = ({
 
   return (
     <>
-      <h1>Measurement list!!</h1>
+      <Heading title="Measurement list" />
       {measurements.map((measurement) => (
         <MeasurementItem
           key={measurement.date}
