@@ -1,13 +1,14 @@
 import Chart from 'react-google-charts';
 import PropTypes from 'prop-types';
+import Heading from './layouts/Heading';
 
 const Progress = ({
   monthlyProgress, thisWeek, lastWeek, twoWeek, threeWeek,
 }) => (
-  <div>
-    <div className="relative flex justify-center items-center shadow m-4">
+  <div className="">
+    <Heading title="Progress" />
+    <div className="relative flex justify-center items-center bg-white">
       <Chart
-        className="absolute"
         width="300px"
         height="300px"
         chartType="PieChart"
@@ -35,25 +36,27 @@ const Progress = ({
         <p>this month</p>
       </div>
     </div>
-    <Chart
-      width="500px"
-      height="300px"
-      chartType="Bar"
-      loader={<div>Loading Chart</div>}
-      data={[
-        ['Weeks', 'value'],
-        ['This week', thisWeek],
-        ['Last Week', lastWeek],
-        ['2 weeks ago', twoWeek],
-        ['3 weeks ago', threeWeek],
-      ]}
-      options={{
-        chart: {
-          title: 'Weekly progress score',
-          subtitle: 'Your progress on weekly breakdown',
-        },
-      }}
-    />
+    <div className="flex justify-center bg-white mt-4 p-5">
+      <Chart
+        width="500px"
+        height="300px"
+        chartType="Bar"
+        loader={<div>Loading Chart</div>}
+        data={[
+          ['Weeks', 'value'],
+          ['This week', thisWeek],
+          ['Last Week', lastWeek],
+          ['2 weeks ago', twoWeek],
+          ['3 weeks ago', threeWeek],
+        ]}
+        options={{
+          chart: {
+            title: 'Weekly progress score',
+            subtitle: 'Your progress on weekly breakdown',
+          },
+        }}
+      />
+    </div>
   </div>
 );
 
