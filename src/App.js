@@ -6,7 +6,7 @@ import NavbarContainer from './containers/NavbarContainer';
 function App() {
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
   return (
-    <div className="App">
+    <div className="App max-w-3xl">
       {isAuthenticated ? <NavbarContainer /> : ''}
       <Routes />
     </div>
