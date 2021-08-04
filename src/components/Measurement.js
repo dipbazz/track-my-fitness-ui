@@ -52,9 +52,11 @@ const Measurement = ({
             exercise={exercise}
           />
         ))}
-        <button className="w-52 mt-4 py-2 shadow-sm rounded bg-green-400 text-white font-bold text-xl" type="submit">
-          Save
-        </button>
+        <div className="text-center">
+          <button className="w-52 mt-4 py-2 shadow-sm rounded bg-green-400 text-white font-bold text-xl" type="submit">
+            Save
+          </button>
+        </div>
       </form>
     </>
   );

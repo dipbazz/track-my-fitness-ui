@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 const InputError = ({ error }) => (
-  <p style={{ color: 'red' }}>
+  <p className="text-red-500 mb-3 text-left">
     {error}
   </p>
 );

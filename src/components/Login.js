@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { STATUS } from '../redux/actions/actionTypes';
 import FormError from './layouts/FormError';
 import InputError from './layouts/InputError';
+import Heading from './layouts/Heading';
 
 /* eslint-disable react/jsx-props-no-spreading */
 const Login = ({
@@ -25,39 +26,41 @@ const Login = ({
 
   return (
     <div>
-      <h1>Login!!</h1>
+      <Heading title="Login" />
       {status === STATUS.error && <FormError errors={error} /> }
 
-      <form onSubmit={handleSubmit(submitForm)}>
-        <input
-          type="email"
-          name="email"
-          {...register('email', {
-            required: 'This field is required',
-          })}
-          placeholder="your email"
-        />
-        {errors.email && <InputError error={errors.email.message} />}
-        <br />
-        <input
-          type="password"
-          name="password"
-          {...register('password', {
-            required: 'This field is required',
-            minLength: {
-              value: 8,
-              message: 'Password should be at least 8 character long.',
-            },
-          })}
-          placeholder="********"
-        />
-        {errors.password && <InputError error={errors.password.message} />}
-        <br />
-        <button type="submit" disabled={status === STATUS.loading}>
-          { status === STATUS.loading ? 'Logging in ...' : 'Login'}
-        </button>
-      </form>
-      <Link to="/register">Register </Link>
+      <div className="p-5 m-auto max-w-md text-center bg-white mt-4 rounded">
+        <form onSubmit={handleSubmit(submitForm)}>
+          <input
+            type="email"
+            name="email"
+            className="border border-gray-400 px-3 py-2 rounded my-3 w-full"
+            {...register('email', {
+              required: 'This field is required',
+            })}
+            placeholder="your email"
+          />
+          {errors.email && <InputError error={errors.email.message} />}
+          <input
+            type="password"
+            name="password"
+            className="border border-gray-400 px-3 py-2 rounded my-3 w-full"
+            {...register('password', {
+              required: 'This field is required',
+              minLength: {
+                value: 8,
+                message: 'Password should be at least 8 character long.',
+              },
+            })}
+            placeholder="********"
+          />
+          {errors.password && <InputError error={errors.password.message} />}
+          <button className="bg-green-400 px-10 py-2 mb-4 text-white rounded font-semibold" type="submit" disabled={status === STATUS.loading}>
+            { status === STATUS.loading ? 'Logging in ...' : 'Login'}
+          </button>
+        </form>
+        <Link to="/register" className="text-blue-500 underline">Register </Link>
+      </div>
     </div>
   );
 };

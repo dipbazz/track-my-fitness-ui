@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 
 const FormError = ({ errors }) => (
-  <p style={{ color: 'red' }}>
-    {Object.keys(errors).map((key) => `${key}: ${errors[key]}`)}
+  <p className="text-red-500 p-3 text-center mt-4">
+    {Object.keys(errors).map((key) => `${key} ${errors[key]}`)}
   </p>
 );
 
