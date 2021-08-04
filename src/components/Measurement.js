@@ -31,8 +31,8 @@ const Measurement = ({
       .then(() => {
         setMeasurements({});
         history.push('/measurement/list');
-      })
-      .catch((errors) => console.log(errors));
+      });
+    // .catch((errors) => console.log(errors));
   };
 
   const measurementChange = ({ target: { name, value } }) => {

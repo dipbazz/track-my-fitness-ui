@@ -6,7 +6,6 @@ import {
 } from '../utils/helper';
 
 const mapStateToProps = (state) => {
-  console.log(state);
   const { measurements } = state.measurement;
   const { exercises } = state.exercise;
   const monthlyProgress = calculateProgress(

@@ -10,7 +10,6 @@ const MeasurementList = ({
   status, error, measurements, getMeasurements, getExercises,
 }) => {
   useEffect(() => {
-    console.log(status, error);
     getExercises();
     getMeasurements();
   }, []);
