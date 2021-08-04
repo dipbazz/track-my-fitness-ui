@@ -1,8 +1,10 @@
+import moment from 'moment';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import Chart from 'react-google-charts';
 import { calculateProgress } from '../utils/helper';
 import ExerciseCard from './layouts/ExerciseCard';
+import Heading from './layouts/Heading';
 
 const MeasurementDetail = ({ measurement, exercises }) => {
   const [progress, setProgress] = useState(0);
@@ -17,8 +19,15 @@ const MeasurementDetail = ({ measurement, exercises }) => {
 
   return (
     <>
-      <div>
-        <span>{measurement.date}</span>
+      <Heading title={`Detail of ${moment(measurement.date).format('dddd, MMMM Do YYYY')}`} />
+      <div className="bg-white flex flex-col p-5 mb-3 items-center">
+        <p>
+          <span>Target Achieved: </span>
+          <span className="font-semibold">
+            {progress}
+            %
+          </span>
+        </p>
         <Chart
           width="180px"
           height="180px"
@@ -37,16 +46,9 @@ const MeasurementDetail = ({ measurement, exercises }) => {
             },
           }}
         />
-        <p>
-          <span>Target Achieved: </span>
-          <span>
-            {progress}
-            %
-          </span>
-        </p>
       </div>
 
-      <div className="grid grid-cols-2">
+      <div className="grid grid-cols-2 gap-5 mt-6">
         {exercises.map((exercise) => (
           <ExerciseCard
             key={exercise.id}
