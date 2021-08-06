@@ -1,6 +1,48 @@
-# Getting Started with Create React App
+![](https://img.shields.io/badge/Microverse-blueviolet)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Track my fitness Application
+---
+## About
+
+A fitness tracking app to measure daily exercises performed and stay focused on achieving the target.
+
+![Screenshot of track my fitness app](./public/fitness.png)
+
+## Application features
+
+User can use this application to keep the measurements of the exercise they have done. The features of the project is listed as below:
+
+- User can login and register to the system.
+- User can keep their measurements of the exercise.
+- User can view all the list of measurements.
+- User can go the detail of spcific measurements and find the information with progress chart.
+- User can view the progress report for monthly and weekly in a bar and pie chart.
+
+
+## Getting the app in the local machine.
+
+### Installation instructions
+
+- Clone the repo and navigate to the directory
+- Install the npm package with `npm install`
+- Start the server with `npm start`
+- Open your browser at [localhost](http://localhost:3000/).
+
+## Live Demo
+
+This project is hosted on netlify.
+
+[Live demo link](https://bookstore-cms-db.netlify.app/)
+
+## Built With
+
+- node.js
+- react.js
+- react-redux
+- redux
+- prop-types
+- create-react-app
+- npm
 
 ## Available Scripts
 
@@ -35,40 +77,28 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point, you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However, we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## Authors
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+👤 **Dipesh Bajgain**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- GitHub: [@dipbazz](https://github.com/dipbazz)
+- Twitter: [@dipbazz](https://twitter.com/dipbazz)
+- LinkedIn: [Dipesh Bajgain](https://www.linkedin.com/in/dipbazz/)
 
-### Code Splitting
+## 🤝 Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Contributions, issues, and feature requests are welcome!
 
-### Analyzing the Bundle Size
+## Show your support
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Give a ⭐️ if you like this project!
 
-### Making a Progressive Web App
+<!-- ## Acknowledgments -->
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 📝 License
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-
-
-## Attribution
-<div>Icons made by <a href="https://www.flaticon.com/authors/vectors-market" title="Vectors Market">Vectors Market</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div><div>Icons made by <a href="https://www.flaticon.com/authors/ultimatearm" title="ultimatearm">ultimatearm</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+This project is [CC0](./LICENSE) licensed.

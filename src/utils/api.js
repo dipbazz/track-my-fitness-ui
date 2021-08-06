@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { getAuthorizeToken, login, logout } from './helper';
 
-const baseURL = 'http://localhost:3000/api';
+const baseURL = 'https://track-my-fitness-api.herokuapp.com/api';
 
 const api = axios.create({
   baseURL,
