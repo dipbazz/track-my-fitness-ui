@@ -4,7 +4,7 @@
 ---
 ## About
 
-A fitness tracking app to measure daily exercises performed and stay focused on achieving the target.
+A fitness tracking app to measure daily exercises performed and stay focused on achieving the target. Backend API for this app is [track my fitness API](https://github.com/dipbazz/track-my-fitness)
 
 ![Screenshot of track my fitness app](./public/fitness.png)
 
