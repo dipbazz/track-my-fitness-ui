@@ -32,7 +32,7 @@ User can use this application to keep the measurements of the exercise they have
 
 This project is hosted on netlify.
 
-[Live demo link](https://bookstore-cms-db.netlify.app/)
+[Live demo link](https://track-my-fitness-ui.netlify.app/)
 
 ## Built With
 
