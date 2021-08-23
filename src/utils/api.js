@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { getAuthorizeToken, login, logout } from './helper';
 
-const baseURL = 'https://track-my-fitness-api.herokuapp.com/api';
+const baseURL = 'http://localhost:3000/api';
 
 const api = axios.create({
   baseURL,
@@ -45,6 +45,8 @@ const auth = {
     login(data.user.token);
     return Promise.resolve(data);
   }),
+
+  user: () => authorizeRequests.get('/user'),
 };
 
 const exercise = {

@@ -8,7 +8,7 @@ const isAuthenticated = Boolean(window.localStorage.getItem('token'));
 const initialState = {
   isAuthenticated,
   status: STATUS.idle,
-  user: null,
+  user: {},
   error: null,
 };
 
