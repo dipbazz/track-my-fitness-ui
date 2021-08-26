@@ -5,12 +5,11 @@ import { useHistory } from 'react-router-dom';
 import MeasurementForm from './MeasurementForm';
 import { measurement } from '../utils/api';
 import Heading from './layouts/Heading';
-import { STATUS } from '../redux/actions/actionTypes';
 import FormError from './layouts/FormError';
 import Loading from './layouts/Loading';
 
 const Measurement = ({
-  status, error, exercises, getExercise,
+  isLoading, apiError, exercises, getExercise,
 }) => {
   const [measurements, setMeasurements] = useState({});
   const history = useHistory();
@@ -42,7 +41,7 @@ const Measurement = ({
     });
   };
 
-  if (status === STATUS.loading) {
+  if (isLoading) {
     return (
       <>
         <Heading title="Add your measurements" />
@@ -54,7 +53,7 @@ const Measurement = ({
   return (
     <>
       <Heading title="Add your measurements" />
-      {status === STATUS.error && <FormError errors={error} /> }
+      {apiError && <FormError errors={apiError.errors} /> }
       <form onSubmit={submitForm}>
         {exercises.map((exercise) => (
           <MeasurementForm
@@ -75,12 +74,12 @@ const Measurement = ({
 };
 
 Measurement.defaultProps = {
-  error: {},
+  apiError: {},
 };
 
 Measurement.propTypes = {
-  status: PropTypes.string.isRequired,
-  error: PropTypes.objectOf(PropTypes.any),
+  isLoading: PropTypes.bool.isRequired,
+  apiError: PropTypes.objectOf(PropTypes.any),
   exercises: PropTypes.arrayOf(PropTypes.object).isRequired,
   getExercise: PropTypes.func.isRequired,
 };

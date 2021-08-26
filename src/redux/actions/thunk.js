@@ -1,13 +1,11 @@
 import {
-  exerciseError,
-  exerciseLoading,
-  exerciseSuccess,
   loginUser,
   logoutUser,
   measurementError,
   measurementLoading,
   measurementSuccess,
   registerUser,
+  setExercise,
 } from '.';
 import { auth, exercise, measurement } from '../../utils/api';
 
@@ -39,10 +37,10 @@ export const logoutUserAsync = () => (dispatch) => auth.logout()
   .then(() => dispatch(logoutUser()));
 
 export const getExerciseAsync = (id) => (dispatch) => {
-  dispatch(exerciseLoading());
+  dispatch(setExercise.request());
   exercise.get(id)
-    .then((data) => dispatch(exerciseSuccess(data)))
-    .catch((error) => dispatch(exerciseError(error.response.data)));
+    .then((data) => dispatch(setExercise.success(data)))
+    .catch((error) => dispatch(setExercise.error(error.response.data)));
 };
 
 export const getMeasurementAsync = (id) => (dispatch) => {
