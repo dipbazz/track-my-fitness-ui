@@ -4,12 +4,12 @@ import { getExerciseAsync, getMeasurementAsync } from '../redux/actions/thunk';
 import MeasurementDetail from '../components/MeasurementDetail';
 
 const mapStateToProps = (state, ownProps) => {
-  const { measurements } = state.measurement;
+  const { data: measurements } = state.measurements;
   const measurement = measurements.find((measurement) => (
     measurement.date === ownProps.match.params.date));
   return {
     measurement,
-    exercises: state.exercise.exercises,
+    exercises: state.exercises.data,
   };
 };
 

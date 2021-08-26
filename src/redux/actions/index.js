@@ -1,6 +1,4 @@
-import {
-  LOGOUT, LOADING_MEASUREMENT, SUCCESS_MEASUREMENT, ERROR_MEASUREMENT,
-} from './actionTypes';
+import { LOGOUT } from './actionTypes';
 
 const actionCreator = (action) => {
   const values = ['SUCCESS', 'ERROR', 'REQUEST'];
@@ -19,37 +17,23 @@ const actionCreator = (action) => {
 export const loginUser = actionCreator('LOGIN_USER');
 export const registerUser = actionCreator('REGISTER_USER');
 export const setExercise = actionCreator('EXERCISE');
-
-console.log(setExercise);
-
+export const setMeasurement = actionCreator('MEASUREMENT');
 export const logoutUser = () => ({
   type: LOGOUT,
 });
 
-// export const exerciseLoading = () => ({
-//   type: LOADING_EXERCISE,
+console.log(setMeasurement);
+
+// export const measurementLoading = () => ({
+//   type: LOADING_MEASUREMENT,
 // });
 
-// export const exerciseSuccess = (data) => ({
-//   type: SUCCESS_EXERCISE,
+// export const measurementSuccess = (data) => ({
+//   type: SUCCESS_MEASUREMENT,
 //   payload: data,
 // });
 
-// export const exerciseError = (error) => ({
-//   type: ERROR_EXERCISE,
+// export const measurementError = (error) => ({
+//   type: ERROR_MEASUREMENT,
 //   payload: error,
 // });
-
-export const measurementLoading = () => ({
-  type: LOADING_MEASUREMENT,
-});
-
-export const measurementSuccess = (data) => ({
-  type: SUCCESS_MEASUREMENT,
-  payload: data,
-});
-
-export const measurementError = (error) => ({
-  type: ERROR_MEASUREMENT,
-  payload: error,
-});

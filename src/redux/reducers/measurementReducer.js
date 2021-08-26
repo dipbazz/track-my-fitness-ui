@@ -1,14 +1,5 @@
-import {
-  ERROR_MEASUREMENT,
-  LOADING_MEASUREMENT,
-  STATUS, SUCCESS_MEASUREMENT,
-} from '../actions/actionTypes';
-
-const initialState = {
-  status: STATUS.idle,
-  measurements: [],
-  error: null,
-};
+import { setMeasurement } from '../actions';
+import reducerHandler, { initialState } from './ReducerHandler';
 
 const prepareData = (measurements) => {
   const items = {};
@@ -27,26 +18,17 @@ const prepareData = (measurements) => {
 };
 
 const measurementReducer = (state = initialState, action) => {
+  const response = reducerHandler(state, action, setMeasurement);
+
   switch (action.type) {
-    case SUCCESS_MEASUREMENT:
+    case setMeasurement.SUCCESS:
       return {
-        ...state,
-        measurements: prepareData(action.payload),
-        status: STATUS.success,
-        error: null,
+        ...response,
+        data: prepareData(action.data),
       };
-    case LOADING_MEASUREMENT:
-      return {
-        ...state,
-        status: STATUS.loading,
-        error: null,
-      };
-    case ERROR_MEASUREMENT:
-      return {
-        ...state,
-        status: STATUS.error,
-        error: action.payload,
-      };
+    case setMeasurement.ERROR:
+    case setMeasurement.REQUEST:
+      return response;
     default:
       return state;
   }

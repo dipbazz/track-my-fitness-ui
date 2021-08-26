@@ -6,7 +6,3 @@ export const STATUS = {
 };
 
 export const LOGOUT = 'LOGOUT';
-
-export const LOADING_MEASUREMENT = 'LOADING_MEASUREMENT';
-export const SUCCESS_MEASUREMENT = 'SUCCESS_MEASUREMENT';
-export const ERROR_MEASUREMENT = 'ERROR_MEASUREMENT';

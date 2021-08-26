@@ -6,7 +6,7 @@ import userReducer from './userReducer';
 const rootReducer = combineReducers({
   currentUser: userReducer,
   exercises: exerciseReducer,
-  measurement: measurementReducer,
+  measurements: measurementReducer,
 });
 
 export default rootReducer;

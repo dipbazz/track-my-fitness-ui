@@ -3,9 +3,9 @@ import MeasurementList from '../components/MeasurementList';
 import { getExerciseAsync, getMeasurementAsync } from '../redux/actions/thunk';
 
 const mapStateToProps = (state) => ({
-  status: state.measurement.status,
-  error: state.measurement.error,
-  measurements: state.measurement.measurements,
+  isLoading: state.measurements.isLoading,
+  apiError: state.measurements.error,
+  measurements: state.measurements.data || [],
 });
 
 const mapDispatchToProps = {

@@ -1,11 +1,9 @@
 import {
   loginUser,
   logoutUser,
-  measurementError,
-  measurementLoading,
-  measurementSuccess,
   registerUser,
   setExercise,
+  setMeasurement,
 } from '.';
 import { auth, exercise, measurement } from '../../utils/api';
 
@@ -44,8 +42,8 @@ export const getExerciseAsync = (id) => (dispatch) => {
 };
 
 export const getMeasurementAsync = (id) => (dispatch) => {
-  dispatch(measurementLoading());
+  dispatch(setMeasurement.request());
   measurement.get(id)
-    .then((data) => dispatch(measurementSuccess(data)))
-    .catch((error) => dispatch(measurementError(error.response.data)));
+    .then((data) => dispatch(setMeasurement.success(data)))
+    .catch((error) => dispatch(setMeasurement.error(error.response.data)));
 };

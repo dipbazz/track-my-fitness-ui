@@ -8,7 +8,7 @@ import { FaChevronRight } from 'react-icons/fa';
 import { calculateProgress } from '../utils/helper';
 
 const MeasurementItem = ({ date, measurements }) => {
-  const exercises = useSelector((state) => state.exercise.exercises);
+  const exercises = useSelector((state) => state.exercises.data);
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
