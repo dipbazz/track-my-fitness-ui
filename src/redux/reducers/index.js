@@ -4,7 +4,7 @@ import measurementReducer from './measurementReducer';
 import userReducer from './userReducer';
 
 const rootReducer = combineReducers({
-  user: userReducer,
+  currentUser: userReducer,
   exercise: exerciseReducer,
   measurement: measurementReducer,
 });

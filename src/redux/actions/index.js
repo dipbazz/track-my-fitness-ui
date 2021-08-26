@@ -1,22 +1,40 @@
 import {
-  SUCCESS_LOGIN, LOGOUT, LOADING_LOGIN, ERROR_LOGIN, LOADING_REGISTER,
+  LOGOUT, LOADING_REGISTER,
   SUCCESS_REGISTER, ERROR_REGISTER, LOADING_EXERCISE, SUCCESS_EXERCISE,
   ERROR_EXERCISE, LOADING_MEASUREMENT, SUCCESS_MEASUREMENT, ERROR_MEASUREMENT,
 } from './actionTypes';
 
-export const loginUserLoading = () => ({
-  type: LOADING_LOGIN,
-});
+const actionCreator = (action) => {
+  const values = ['SUCCESS', 'ERROR', 'REQUEST'];
+  const types = values.reduce((acc, value) => {
+    const type = `${action}_${value}`;
+    acc[value] = type;
+    acc[value.toLowerCase()] = (data) => ({
+      type,
+      data,
+    });
+    return acc;
+  }, {});
+  return types;
+};
 
-export const loginUserSuccess = (user) => ({
-  type: SUCCESS_LOGIN,
-  payload: user,
-});
+export const loginUser = actionCreator('LOGIN_USER');
 
-export const loginUserError = (error) => ({
-  type: ERROR_LOGIN,
-  payload: error,
-});
+console.log(loginUser);
+
+// export const loginUserLoading = () => ({
+//   type: LOADING_LOGIN,
+// });
+
+// export const loginUserSuccess = (user) => ({
+//   type: SUCCESS_LOGIN,
+//   payload: user,
+// });
+
+// export const loginUserError = (error) => ({
+//   type: ERROR_LOGIN,
+//   payload: error,
+// });
 
 export const registerUserLoading = () => ({
   type: LOADING_REGISTER,

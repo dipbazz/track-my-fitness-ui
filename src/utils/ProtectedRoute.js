@@ -25,7 +25,7 @@ ProtectedRoute.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  isAuthenticated: state.user.isAuthenticated,
+  isAuthenticated: state.currentUser.isAuthenticated,
 });
 
 export default connect(mapStateToProps)(ProtectedRoute);

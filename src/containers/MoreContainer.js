@@ -3,7 +3,7 @@ import More from '../components/More';
 import { logoutUserAsync } from '../redux/actions/thunk';
 
 const mapStateToProps = (state) => ({
-  user: state.user.user,
+  user: state.currentUser.data || {},
 });
 
 const mapDispatchToProps = {

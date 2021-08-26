@@ -3,7 +3,7 @@ import Navbar from './components/Navbar';
 import Routes from './config/Routes';
 
 function App() {
-  const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
+  const isAuthenticated = useSelector((state) => state.currentUser.isAuthenticated);
   return (
     <div className="max-w-3xl m-auto mb-32">
       {isAuthenticated ? <Navbar /> : ''}

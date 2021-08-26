@@ -2,7 +2,8 @@ import {
   exerciseError,
   exerciseLoading,
   exerciseSuccess,
-  loginUserError, loginUserLoading, loginUserSuccess, logoutUser,
+  loginUser,
+  logoutUser,
   measurementError,
   measurementLoading,
   measurementSuccess,
@@ -11,15 +12,15 @@ import {
 import { auth, exercise, measurement } from '../../utils/api';
 
 export const loginUserAsync = (email, password) => (dispatch) => {
-  dispatch(loginUserLoading());
+  dispatch(loginUser.request());
   auth.login({
     user: {
       email,
       password,
     },
   })
-    .then((data) => dispatch(loginUserSuccess(data)))
-    .catch((error) => dispatch(loginUserError(error.response.data)));
+    .then((data) => dispatch(loginUser.success(data)))
+    .catch((error) => dispatch(loginUser.error(error.response.data)));
 };
 
 export const registerUserAsync = (email, password) => (dispatch) => {
