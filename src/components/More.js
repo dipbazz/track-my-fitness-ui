@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import Heading from './layouts/Heading';
 
 const More = ({ logout, user }) => {
+  console.log(user);
   const handleLogout = () => {
     logout();
   };

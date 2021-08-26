@@ -6,8 +6,8 @@ import {
 } from '../utils/helper';
 
 const mapStateToProps = (state) => {
-  const { measurements } = state.measurement;
-  const { exercises } = state.exercise;
+  const { data: measurements } = state.measurements;
+  const { data: exercises } = state.exercises;
   const monthlyProgress = calculateProgress(
     monthlyMeasurements(measurements),
     exercises,
@@ -39,9 +39,5 @@ const mapStateToProps = (state) => {
     threeWeek,
   };
 };
-
-// const mapDispatchToProps = {
-//   registerUser: (email, password) => registerUserAsync(email, password),
-// };
 
 export default connect(mapStateToProps)(Progress);
