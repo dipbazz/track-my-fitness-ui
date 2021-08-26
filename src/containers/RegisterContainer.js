@@ -3,9 +3,9 @@ import Register from '../components/Register';
 import { registerUserAsync } from '../redux/actions/thunk';
 
 const mapStateToProps = (state) => ({
-  status: state.user.status,
-  error: state.user.error,
-  isAuthenticated: state.user.isAuthenticated,
+  isLoading: state.currentUser.isLoading,
+  apiError: state.currentUser.error,
+  isAuthenticated: state.currentUser.isAuthenticated,
 });
 
 const mapDispatchToProps = {

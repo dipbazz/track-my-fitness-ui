@@ -1,5 +1,5 @@
 import reducerHandler, { initialState } from './ReducerHandler';
-import { loginUser } from '../actions';
+import { loginUser, registerUser } from '../actions';
 import {
   LOGOUT,
 } from '../actions/actionTypes';
@@ -12,22 +12,38 @@ const userState = {
 };
 
 const userReducer = (state = userState, action) => {
-  const response = reducerHandler(state, action, loginUser);
+  const loginResponse = reducerHandler(state, action, loginUser);
+  const registerResponse = reducerHandler(state, action, registerUser);
 
   switch (action.type) {
     case loginUser.SUCCESS:
       return {
-        ...response,
+        ...loginResponse,
         isAuthenticated: true,
       };
     case loginUser.ERROR:
       return {
-        ...response,
+        ...loginResponse,
         isAuthenticated: false,
       };
     case loginUser.REQUEST:
       return {
-        ...response,
+        ...loginResponse,
+        isAuthenticated: false,
+      };
+    case registerUser.SUCCESS:
+      return {
+        ...registerResponse,
+        isAuthenticated: true,
+      };
+    case registerUser.ERROR:
+      return {
+        ...registerResponse,
+        isAuthenticated: false,
+      };
+    case registerUser.REQUEST:
+      return {
+        ...registerResponse,
         isAuthenticated: false,
       };
     case LOGOUT:

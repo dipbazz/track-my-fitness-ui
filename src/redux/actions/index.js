@@ -1,6 +1,6 @@
 import {
-  LOGOUT, LOADING_REGISTER,
-  SUCCESS_REGISTER, ERROR_REGISTER, LOADING_EXERCISE, SUCCESS_EXERCISE,
+  LOGOUT,
+  LOADING_EXERCISE, SUCCESS_EXERCISE,
   ERROR_EXERCISE, LOADING_MEASUREMENT, SUCCESS_MEASUREMENT, ERROR_MEASUREMENT,
 } from './actionTypes';
 
@@ -19,36 +19,23 @@ const actionCreator = (action) => {
 };
 
 export const loginUser = actionCreator('LOGIN_USER');
+export const registerUser = actionCreator('REGISTER_USER');
 
-console.log(loginUser);
+console.log(registerUser);
 
-// export const loginUserLoading = () => ({
-//   type: LOADING_LOGIN,
+// export const registerUserLoading = () => ({
+//   type: LOADING_REGISTER,
 // });
 
-// export const loginUserSuccess = (user) => ({
-//   type: SUCCESS_LOGIN,
+// export const registerUserSuccess = (user) => ({
+//   type: SUCCESS_REGISTER,
 //   payload: user,
 // });
 
-// export const loginUserError = (error) => ({
-//   type: ERROR_LOGIN,
+// export const registerUserError = (error) => ({
+//   type: ERROR_REGISTER,
 //   payload: error,
 // });
-
-export const registerUserLoading = () => ({
-  type: LOADING_REGISTER,
-});
-
-export const registerUserSuccess = (user) => ({
-  type: SUCCESS_REGISTER,
-  payload: user,
-});
-
-export const registerUserError = (error) => ({
-  type: ERROR_REGISTER,
-  payload: error,
-});
 
 export const logoutUser = () => ({
   type: LOGOUT,

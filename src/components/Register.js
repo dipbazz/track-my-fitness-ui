@@ -2,14 +2,13 @@ import { Link, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { STATUS } from '../redux/actions/actionTypes';
 import InputError from './layouts/InputError';
 import FormError from './layouts/FormError';
 import Heading from './layouts/Heading';
 
 /* eslint-disable react/jsx-props-no-spreading */
 const Register = ({
-  registerUser, status, error, isAuthenticated,
+  registerUser, isLoading, apiError, isAuthenticated,
 }) => {
   const history = useHistory();
   const {
@@ -23,12 +22,12 @@ const Register = ({
     if (isAuthenticated) {
       history.push('/');
     }
-  }, [status]);
+  }, [isAuthenticated]);
 
   return (
     <div>
       <Heading title="Register your account" />
-      {status === STATUS.error && <FormError errors={error} /> }
+      {apiError && <FormError errors={apiError.errors} /> }
 
       <div className="p-5 m-auto max-w-md text-center bg-white mt-4 rounded">
         <form onSubmit={handleSubmit(submitForm)}>
@@ -60,7 +59,7 @@ const Register = ({
             placeholder="confirm password"
           />
           {errors.confirmPassword && <InputError error={errors.confirmPassword.message} />}
-          <button className="bg-green-400 px-10 py-2 mb-4 text-white rounded font-semibold" type="submit" disabled={status === STATUS.loading}>
+          <button className="bg-green-400 px-10 py-2 mb-4 text-white rounded font-semibold" type="submit" disabled={isLoading}>
             Register
           </button>
         </form>
@@ -71,13 +70,13 @@ const Register = ({
 };
 
 Register.defaultProps = {
-  error: {},
+  apiError: {},
 };
 
 Register.propTypes = {
   registerUser: PropTypes.func.isRequired,
-  status: PropTypes.string.isRequired,
-  error: PropTypes.objectOf(PropTypes.object),
+  isLoading: PropTypes.bool.isRequired,
+  apiError: PropTypes.objectOf(PropTypes.object),
   isAuthenticated: PropTypes.bool.isRequired,
 };
 
