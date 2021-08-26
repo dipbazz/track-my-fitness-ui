@@ -2,15 +2,15 @@ import { Link, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { STATUS } from '../redux/actions/actionTypes';
 import FormError from './layouts/FormError';
 import InputError from './layouts/InputError';
 import Heading from './layouts/Heading';
 
 /* eslint-disable react/jsx-props-no-spreading */
 const Login = ({
-  login, status, error, isAuthenticated,
+  login, apiError, isAuthenticated, isLoading,
 }) => {
+  console.log(apiError);
   const history = useHistory();
   const { register, handleSubmit, formState: { errors } } = useForm();
 
@@ -22,12 +22,12 @@ const Login = ({
     if (isAuthenticated) {
       history.push('/');
     }
-  }, [status]);
+  }, [isAuthenticated]);
 
   return (
     <div>
       <Heading title="Login" />
-      {status === STATUS.error && <FormError errors={error} /> }
+      {apiError && <FormError errors={apiError.errors} /> }
 
       <div className="p-5 m-auto max-w-md text-center bg-white mt-4 rounded">
         <form onSubmit={handleSubmit(submitForm)}>
@@ -55,8 +55,8 @@ const Login = ({
             placeholder="********"
           />
           {errors.password && <InputError error={errors.password.message} />}
-          <button className="bg-green-400 px-10 py-2 mb-4 text-white rounded font-semibold" type="submit" disabled={status === STATUS.loading}>
-            { status === STATUS.loading ? 'Logging in ...' : 'Login'}
+          <button className="bg-green-400 px-10 py-2 mb-4 text-white rounded font-semibold" type="submit" disabled={isLoading}>
+            { isLoading ? 'Logging in ...' : 'Login'}
           </button>
         </form>
         <Link to="/register" className="text-blue-500 underline">Register </Link>
@@ -66,13 +66,13 @@ const Login = ({
 };
 
 Login.defaultProps = {
-  error: {},
+  apiError: {},
 };
 
 Login.propTypes = {
   login: PropTypes.func.isRequired,
-  status: PropTypes.string.isRequired,
-  error: PropTypes.objectOf(PropTypes.any),
+  isLoading: PropTypes.bool.isRequired,
+  apiError: PropTypes.objectOf(PropTypes.any),
   isAuthenticated: PropTypes.bool.isRequired,
 };
 
