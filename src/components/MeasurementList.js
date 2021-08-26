@@ -9,8 +9,10 @@ const MeasurementList = ({
   isLoading, apiError, measurements, getMeasurements, getExercises,
 }) => {
   useEffect(() => {
-    getExercises();
-    getMeasurements();
+    if (measurements.length === 0) {
+      getExercises();
+      getMeasurements();
+    }
   }, []);
 
   if (isLoading) {

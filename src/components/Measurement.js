@@ -14,7 +14,9 @@ const Measurement = ({
   const [measurements, setMeasurements] = useState({});
   const history = useHistory();
   useEffect(() => {
-    getExercise();
+    if (exercises.length === 0) {
+      getExercise();
+    }
   }, []);
 
   const submitForm = (e) => {
@@ -31,7 +33,6 @@ const Measurement = ({
         setMeasurements({});
         history.push('/measurement/list');
       });
-    // .catch((errors) => console.log(errors));
   };
 
   const measurementChange = ({ target: { name, value } }) => {

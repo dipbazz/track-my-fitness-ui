@@ -33,7 +33,7 @@ const authorizeRequests = {
 const auth = {
   login: (body) => requests.post('/users/login', body).then((data) => {
     login(data.user.token);
-    return Promise.resolve(data);
+    return Promise.resolve(data.user);
   }),
 
   logout: () => {
@@ -43,7 +43,7 @@ const auth = {
 
   register: (body) => requests.post('/users', body).then((data) => {
     login(data.user.token);
-    return Promise.resolve(data);
+    return Promise.resolve(data.user);
   }),
 
   user: () => authorizeRequests.get('/user'),

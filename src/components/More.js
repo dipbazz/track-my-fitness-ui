@@ -3,18 +3,12 @@ import { FaUserAlt } from 'react-icons/fa';
 import { GrUserSettings } from 'react-icons/gr';
 import { FiLogOut } from 'react-icons/fi';
 import PropTypes from 'prop-types';
-import { useEffect } from 'react';
 import Heading from './layouts/Heading';
 
 const More = ({ logout, user }) => {
-  console.log(user);
   const handleLogout = () => {
     logout();
   };
-
-  useEffect(() => {
-
-  }, []);
 
   return (
     <>

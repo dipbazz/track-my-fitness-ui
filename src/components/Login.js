@@ -10,7 +10,6 @@ import Heading from './layouts/Heading';
 const Login = ({
   login, apiError, isAuthenticated, isLoading,
 }) => {
-  console.log(apiError);
   const history = useHistory();
   const { register, handleSubmit, formState: { errors } } = useForm();
 

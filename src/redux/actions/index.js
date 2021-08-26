@@ -1,4 +1,4 @@
-import { LOGOUT } from './actionTypes';
+export const LOGOUT = 'LOGOUT';
 
 const actionCreator = (action) => {
   const values = ['SUCCESS', 'ERROR', 'REQUEST'];
@@ -21,19 +21,3 @@ export const setMeasurement = actionCreator('MEASUREMENT');
 export const logoutUser = () => ({
   type: LOGOUT,
 });
-
-console.log(setMeasurement);
-
-// export const measurementLoading = () => ({
-//   type: LOADING_MEASUREMENT,
-// });
-
-// export const measurementSuccess = (data) => ({
-//   type: SUCCESS_MEASUREMENT,
-//   payload: data,
-// });
-
-// export const measurementError = (error) => ({
-//   type: ERROR_MEASUREMENT,
-//   payload: error,
-// });

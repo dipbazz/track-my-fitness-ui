@@ -1,8 +1,5 @@
 import reducerHandler, { initialState } from './ReducerHandler';
-import { loginUser, registerUser } from '../actions';
-import {
-  LOGOUT,
-} from '../actions/actionTypes';
+import { loginUser, LOGOUT, registerUser } from '../actions';
 
 const isAuthenticated = Boolean(window.localStorage.getItem('token'));
 
