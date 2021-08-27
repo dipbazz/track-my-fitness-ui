@@ -1,4 +1,6 @@
-import { Redirect, Route, Switch } from 'react-router-dom';
+import {
+  Redirect, Route, Switch, useLocation,
+} from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Home from '../components/Home';
 import LoginContainer from '../containers/LoginContainer';
@@ -13,8 +15,15 @@ import MoreContainer from '../containers/MoreContainer';
 const withAuthentication = (WrappedComponent) => {
   const ProtectedRoute = (props) => {
     const isAuthenticated = useSelector((state) => state.currentUser.isAuthenticated);
+    const location = useLocation();
     if (!isAuthenticated) {
-      return <Redirect to={{ pathname: '/login' }} />;
+      return (
+        <Redirect to={{
+          pathname: '/login',
+          state: { from: location },
+        }}
+        />
+      );
     }
     return <WrappedComponent {...props} />;
   };
