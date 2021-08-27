@@ -8,13 +8,17 @@ import Heading from './layouts/Heading';
 
 /* eslint-disable react/jsx-props-no-spreading */
 const Login = ({
-  login, apiError, isAuthenticated, isLoading,
+  login, apiError, isAuthenticated, isLoading, resetUser,
 }) => {
   const history = useHistory();
   const { register, handleSubmit, formState: { errors } } = useForm();
 
   const submitForm = (data) => {
     login(data.email, data.password);
+  };
+
+  const resetUserState = () => {
+    resetUser();
   };
 
   useEffect(() => {
@@ -58,7 +62,7 @@ const Login = ({
             { isLoading ? 'Logging in ...' : 'Login'}
           </button>
         </form>
-        <Link to="/register" className="text-blue-500 underline">Register </Link>
+        <Link to="/register" className="text-blue-500 underline" onClick={resetUserState}>Register </Link>
       </div>
     </div>
   );
@@ -73,6 +77,7 @@ Login.propTypes = {
   isLoading: PropTypes.bool.isRequired,
   apiError: PropTypes.objectOf(PropTypes.any),
   isAuthenticated: PropTypes.bool.isRequired,
+  resetUser: PropTypes.func.isRequired,
 };
 
 export default Login;

@@ -1,4 +1,5 @@
 export const LOGOUT = 'LOGOUT';
+export const RESET_USER = 'RESET_USER';
 
 const actionCreator = (action) => {
   const values = ['SUCCESS', 'ERROR', 'REQUEST'];
@@ -20,4 +21,7 @@ export const setExercise = actionCreator('EXERCISE');
 export const setMeasurement = actionCreator('MEASUREMENT');
 export const logoutUser = () => ({
   type: LOGOUT,
+});
+export const resetUser = () => ({
+  type: RESET_USER,
 });

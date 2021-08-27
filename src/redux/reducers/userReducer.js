@@ -1,5 +1,7 @@
 import reducerHandler, { initialState } from './ReducerHandler';
-import { loginUser, LOGOUT, registerUser } from '../actions';
+import {
+  loginUser, LOGOUT, registerUser, RESET_USER,
+} from '../actions';
 
 const isAuthenticated = Boolean(window.localStorage.getItem('token'));
 
@@ -41,6 +43,11 @@ const userReducer = (state = userState, action) => {
     case registerUser.REQUEST:
       return {
         ...registerResponse,
+        isAuthenticated: false,
+      };
+    case RESET_USER:
+      return {
+        ...initialState,
         isAuthenticated: false,
       };
     case LOGOUT:

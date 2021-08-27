@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import Register from '../components/Register';
+import { resetUser } from '../redux/actions';
 import { registerUserAsync } from '../redux/actions/thunk';
 
 const mapStateToProps = (state) => ({
@@ -10,6 +11,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   registerUser: (email, password) => registerUserAsync(email, password),
+  resetUser: () => resetUser(),
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Register);

@@ -10,7 +10,7 @@ export const logout = () => {
 
 export const getAuthorizeToken = () => {
   const token = window.localStorage.getItem('token');
-  return token ? `Token ${token}` : undefined;
+  return token || undefined;
 };
 
 export const calculateProgress = (measurements, exercises) => {

@@ -8,7 +8,7 @@ import Heading from './layouts/Heading';
 
 /* eslint-disable react/jsx-props-no-spreading */
 const Register = ({
-  registerUser, isLoading, apiError, isAuthenticated,
+  registerUser, isLoading, apiError, isAuthenticated, resetUser,
 }) => {
   const history = useHistory();
   const {
@@ -16,6 +16,10 @@ const Register = ({
   } = useForm();
   const submitForm = (data) => {
     registerUser(data.email, data.password);
+  };
+
+  const resetUserState = () => {
+    resetUser();
   };
 
   useEffect(() => {
@@ -63,7 +67,7 @@ const Register = ({
             Register
           </button>
         </form>
-        <Link className="text-blue-500 underline" to="/login">login </Link>
+        <Link onClick={resetUserState} className="text-blue-500 underline" to="/login">login </Link>
       </div>
     </div>
   );
@@ -78,6 +82,7 @@ Register.propTypes = {
   isLoading: PropTypes.bool.isRequired,
   apiError: PropTypes.objectOf(PropTypes.object),
   isAuthenticated: PropTypes.bool.isRequired,
+  resetUser: PropTypes.func.isRequired,
 };
 
 export default Register;

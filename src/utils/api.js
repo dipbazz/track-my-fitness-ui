@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { getAuthorizeToken, login, logout } from './helper';
 
-const baseURL = 'http://localhost:3000/api';
+const baseURL = process.env.REACT_APP_API_BASE_URL;
 
 const api = axios.create({
   baseURL,
@@ -9,10 +9,19 @@ const api = axios.create({
 
 const authorizeApi = axios.create({
   baseURL,
-  headers: {
-    Authorization: getAuthorizeToken(),
-  },
 });
+
+/* eslint-disable no-param-reassign */
+authorizeApi.interceptors.request.use(
+  (config) => {
+    const token = getAuthorizeToken();
+    if (token) {
+      config.headers.Authorization = `Token ${token}`;
+    }
+    return config;
+  },
+  (error) => Promise.reject(error),
+);
 
 const getData = (res) => res.data;
 
