@@ -1,23 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
+import { useSelector } from 'react-redux';
+import Navbar from './components/Navbar';
+import Routes from './config/Routes';
 
 function App() {
+  const isAuthenticated = useSelector((state) => state.currentUser.isAuthenticated);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="max-w-3xl m-auto mb-32">
+      {isAuthenticated ? <Navbar /> : ''}
+      <Routes />
     </div>
   );
 }
